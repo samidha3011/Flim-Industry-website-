@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FilmVerse Studios</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(8px);
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h1{
+    color:#ffcc00;
+    font-size:32px;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#ffcc00;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+    max-width:800px;
+}
+
+.hero h2{
+    font-size:70px;
+    margin-bottom:20px;
+    color:#ffcc00;
+    animation:fadeDown 1s ease;
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.7;
+    margin-bottom:30px;
+    animation:fadeUp 1s ease;
+}
+
+.btn{
+    padding:15px 35px;
+    background:#ffcc00;
+    color:black;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:white;
+    transform:scale(1.05);
+}
+
+/* SECTION */
+
+section{
+    padding:100px 80px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:50px;
+    color:#ffcc00;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,204,0,0.4);
+}
+
+.about-text p{
+    line-height:1.9;
+    font-size:18px;
+    color:#ddd;
+}
+
+/* MOVIES */
+
+.movies-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.movie-card{
+    background:#1b1b1b;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+
+.movie-card:hover{
+    transform:translateY(-10px);
+}
+
+.movie-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.movie-info{
+    padding:20px;
+}
+
+.movie-info h3{
+    margin-bottom:10px;
+    color:#ffcc00;
+}
+
+.movie-info p{
+    color:#ccc;
+    line-height:1.6;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.stat-box{
+    background:#1b1b1b;
+    padding:40px;
+    border-radius:15px;
+}
+
+.stat-box h2{
+    color:#ffcc00;
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact form{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact input,
+.contact textarea{
+    width:100%;
+    padding:15px;
+    margin:15px 0;
+    border:none;
+    border-radius:10px;
+    background:#1b1b1b;
+    color:white;
+    font-size:16px;
+}
+
+.contact button{
+    margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:30px;
+    color:#aaa;
+    font-size:15px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav{
+        padding:15px 20px;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+
+    .hero h2{
+        font-size:45px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:80px 25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <h1>FILMVERSE</h1>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+    <h2>Welcome To The World Of Cinema</h2>
+
+    <p>
+        Discover blockbuster movies, cinematic stories, legendary actors, and the magic behind the global film industry.
+    </p>
+
+    <button class="btn" onclick="showMessage()">
+        Explore Now
+    </button>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">About Film Industry</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=1200&auto=format&fit=crop" alt="Cinema">
+
+<div class="about-text">
+
+<p>
+The film industry is one of the most influential entertainment industries in the world. From Hollywood to Bollywood, cinema has shaped culture, fashion, storytelling, and emotions for generations.
+</p>
+
+<br>
+
+<p>
+Modern filmmaking combines technology, creativity, visual effects, music, acting, and direction to create unforgettable experiences. Streaming platforms and digital media have transformed the way audiences consume movies globally.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MOVIES -->
+
+<section id="movies">
+
+<h2 class="section-title">Popular Movie Categories</h2>
+
+<div class="movies-grid">
+
+<div class="movie-card">
+
+<img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Action">
+
+<div class="movie-info">
+<h3>Action Movies</h3>
+
+<p>
+Explosive adventures, thrilling fights, and intense cinematic experiences.
+</p>
+
+</div>
+</div>
+
+<div class="movie-card">
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop" alt="Drama">
+
+<div class="movie-info">
+
+<h3>Drama Movies</h3>
+
+<p>
+Emotional storytelling with powerful performances and deep narratives.
+</p>
+
+</div>
+</div>
+
+<div class="movie-card">
+
+<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop" alt="Sci-Fi">
+
+<div class="movie-info">
+
+<h3>Sci-Fi Movies</h3>
+
+<p>
+Futuristic worlds, advanced technology, and imaginative adventures.
+</p>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section>
+
+<h2 class="section-title">Industry Highlights</h2>
+
+<div class="stats">
+
+<div class="stat-box">
+<h2 id="moviesCount">0</h2>
+<p>Movies Released</p>
+</div>
+
+<div class="stat-box">
+<h2 id="awardsCount">0</h2>
+<p>Global Awards</p>
+</div>
+
+<div class="stat-box">
+<h2 id="artistsCount">0</h2>
+<p>Film Artists</p>
+</div>
+
+<div class="stat-box">
+<h2 id="fansCount">0</h2>
+<p>Worldwide Fans</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<h2 class="section-title">Cinema Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+<img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+<img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+<img src="https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+<img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+<img src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=1200&auto=format&fit=crop" alt="Gallery">
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<div class="contact">
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea rows="6" placeholder="Your Message"></textarea>
+
+<button type="button" class="btn">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 FilmVerse Studios | Designed For Film Industry Website
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function showMessage(){
+    alert("Welcome to FilmVerse Studios!");
+}
+
+/* COUNTER ANIMATION */
+
+function counter(id, start, end, speed){
+
+    let obj = document.getElementById(id);
+    let current = start;
+
+    let timer = setInterval(()=>{
+
+        current++;
+
+        obj.textContent = current + "+";
+
+        if(current >= end){
+            clearInterval(timer);
+        }
+
+    }, speed);
+}
+
+counter("moviesCount",0,500,5);
+counter("awardsCount",0,120,20);
+counter("artistsCount",0,1000,2);
+counter("fansCount",0,900,3);
+
+</script>
+
+</body>
+</html>
